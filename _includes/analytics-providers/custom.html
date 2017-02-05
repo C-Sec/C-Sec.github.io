@@ -1,7 +1,5 @@
 <!-- start custom analytics snippet -->
 {% assign yaCounter = site.analytics.custom.tracking_id %}
-
-{% if site.yandex_metrika_id %}
 <script type="text/javascript">
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
@@ -28,5 +26,4 @@
     })(document, window, "yandex_metrika_callbacks");
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/{{ yaCounter }}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-{% endif %}
 <!-- end custom analytics snippet -->

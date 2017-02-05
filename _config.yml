@@ -9,7 +9,7 @@
 locale                   : "ru"
 title                    : "Cyber Security"
 title_separator          : "-"
-name                     : "Your Name"
+name                     : "Роман Алексеев"
 description              : "An amazing website."
 url                      : "https://C-Sec.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
