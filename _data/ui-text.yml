@@ -482,7 +482,7 @@ ru: &DEFAULT_RU
   powered_by                 : "Сайт работает на" # Работает на
   website_label              : "Сайт"   # Веб-сайт
   email_label                : "Электронная почта"
-  recent_posts               : "Свежие записи"
+  recent_posts               : "Свежие записи"  # "Последние записи" / "Свежие посты"
   undefined_wpm              : "Не определён параметр words_per_minute в _config.yml"
   comment_form_info          : "Ваш адрес электронной почты не будет опубликован. Обязательные поля помечены"
   comment_form_comment_label : "Комментарий"
