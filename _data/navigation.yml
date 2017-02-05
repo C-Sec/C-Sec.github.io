@@ -1,16 +1,16 @@
 # main links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+  #- title: "Quick-Start Guide"
+  #  url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  - title: "Sample Posts"
+  - title: "Архив"
     url: /year-archive/
-  - title: "Sample Collections"
-    url: /collection-archive/
-  - title: "Posts by Category"
+  - title: "Категории"
     url: /categories/
-  - title: "Posts by Tags"
+  - title: "Метки"
     url: /tags/
-  - title: "Sitemap"
-    url: /sitemap/
+  - title: "Коллекции"
+    url: /collection-archive/
+  #- title: "Sitemap"
+  #  url: /sitemap/
