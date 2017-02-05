@@ -7,9 +7,9 @@
 
 # Site Settings
 locale                   : "en"
-title                    : "Cyber Security"
+title                    : "Site Title"
 title_separator          : "-"
-name                     : "Роман Алексеев"
+name                     : "Your Name"
 description              : "An amazing website."
 url                      : "https://C-Sec.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -18,9 +18,9 @@ teaser                   : # path of fallback teaser image, e.g. "/assets/images
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 150
 comments:
-  provider               : disqus # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
   disqus:
-    shortname            : c-sec-ru # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -70,11 +70,9 @@ social:
 
 # Analytics
 analytics:
-  provider               : custom # false (default), "google", "google-universal", "custom"
+  provider               : false # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          : UA-91079618-1
-  custom:
-    tracking_id          : 42485424 # Yandex Metrika
+    tracking_id          :
 
 
 # Site Author
@@ -176,7 +174,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: +03:00 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins
