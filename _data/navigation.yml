@@ -10,7 +10,7 @@ main:
     url: /categories/
   - title: "Метки"
     url: /tags/
-  - title: "Коллекции"
-    url: /collection-archive/
+  #- title: "Коллекции"
+  #  url: /collection-archive/
   #- title: "Sitemap"
   #  url: /sitemap/
