@@ -44,9 +44,49 @@ layout: default
         {% endif %}
         {% include page__taxonomy.html %}
         {% if page.modified %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Updated:" }}</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Updated:" }}</strong>
+            <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">
+              {{ page.modified | date: "%-d" }}
+              {% assign month = page.modified | date: '%-m' %}
+              {% case month %}
+                {% when '1' %}января
+                {% when '2' %}февраля
+                {% when '3' %}марта
+                {% when '4' %}апреля
+                {% when '5' %}мая
+                {% when '6' %}июня
+                {% when '7' %}июля
+                {% when '8' %}августа
+                {% when '9' %}сентября
+                {% when '10' %}октября
+                {% when '11' %}ноября
+                {% when '12' %}декабря
+              {% endcase %}
+              {{ page.modified | date: "%Y" }}
+            </time>
+          </p>
         {% elsif page.date %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Updated:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Updated:" }}</strong>
+            <time datetime="{{ page.date | date_to_xmlschema }}">
+              {{ page.date | date: "%-d" }}
+              {% assign month = page.date | date: '%-m' %}
+              {% case month %}
+                {% when '1' %}января
+                {% when '2' %}февраля
+                {% when '3' %}марта
+                {% when '4' %}апреля
+                {% when '5' %}мая
+                {% when '6' %}июня
+                {% when '7' %}июля
+                {% when '8' %}августа
+                {% when '9' %}сентября
+                {% when '10' %}октября
+                {% when '11' %}ноября
+                {% when '12' %}декабря
+              {% endcase %}
+              {{ page.date | date: "%Y" }}
+            </time>
+          </p>
         {% endif %}
       </footer>
 
