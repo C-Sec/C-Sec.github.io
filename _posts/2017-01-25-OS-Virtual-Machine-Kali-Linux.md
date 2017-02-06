@@ -25,7 +25,12 @@ author_profile: true
 
 В том же меню во вкладке Extensions следует установить "Oracle VM VirtualBox Extension Pack", предварительно скачав его с официального сайта [Oracle VM VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads).
 
-### Образ для виртуальной машины
+Рассмотрим два варианта установки Kali Linux на виртуальную машину:
+
+* С использованием готового образа для виртуальной машины
+* Создание виртуальной машины и ручная установка в ней Kali Linux
+
+### Готовый образ для виртуальной машины
 
 Скачиваем с официального сайта готовый образ Kali Linux для VirtualBox [Kali Linux VirtualBox Images](https://www.offensive-security.com/kali-linux-vmware-virtualbox-image-download/)
 
