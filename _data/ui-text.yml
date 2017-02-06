@@ -467,7 +467,7 @@ ru: &DEFAULT_RU
   toc_label                  : "Содержание"
   ext_link_label             : "Прямая ссылка"
   less_than                  : "менее"
-  minute_read                : "минут(ы) на чтение"
+  minute_read                : "мин на чтение"
   share_on_label             : "Поделиться"
   meta_label                 :
   tags_label                 : "Метки:"   # "Теги:" / "Тэги:"
