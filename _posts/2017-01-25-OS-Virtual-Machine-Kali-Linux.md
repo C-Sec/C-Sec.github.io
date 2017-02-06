@@ -31,6 +31,11 @@ author_profile: true
 
 После чего остаётся импортировать данный образ, открыв меню  "File -> Import Appliance..." (Ctrl+I) и выбрав скаченный образ Kali Linux.
 
+Виртуальная машина готова к работе. Остаётся только запустить её. 
+Данные для входа по умолчанию:
+Username: root
+Password: toor
+
 ### Ручная установка
 
 Скачиваем с официального сайта образ Kali Linux [Download Kali Linux Images](https://www.kali.org/downloads/), выбрав, например, "Kali Linux 64 bit".
