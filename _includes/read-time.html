@@ -5,7 +5,7 @@
 {% elsif page.read_time %}
   {% assign words = page.content | strip_html | number_of_words %}
 {% endif %}
-
+Время чтения: 
 {% if words < words_per_minute %}
   {{ site.data.ui-text[site.locale].less_than | default: "less than" }} 1 {{ site.data.ui-text[site.locale].minute_read | default: "minute read" }}
 {% elsif words == words_per_minute %}
