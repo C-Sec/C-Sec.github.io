@@ -1,6 +1,6 @@
 ---
 title:  "Snort: Часть 2. Установка и первичная настройка Snort"
-excerpt: "В данной статье рассмотрим пример установки и первичной настройки Snort для различных ОС. А также рассмотрим конфигурацию сетевого интерфейса, рекомендованой для Snort."
+excerpt: "В данной статье рассмотрим пример установки Snort для ОС Debian. А также рассмотрим конфигурацию сетевого интерфейса, рекомендованой для Snort."
 date:   2017-02-01T02:00:00+03:00
 categories:
    - Snort
@@ -15,13 +15,7 @@ author_profile: true
 {% include toc icon="file-text" %}
 
 
-В данной статье рассмотрим пример установки и первичной настройки Snort для различных ОС:
-
-* Debian
-* Kali Linux
-
-А также рассмотрим конфигурацию сетевого интерфейса, рекомендуой для Snort.
-
+В данной статье рассмотрим пример установки и первичной настройки Snort для ОС Debian. А также рассмотрим конфигурацию сетевого интерфейса, рекомендуой для Snort.
 
 
 ## Установка и первичная настройка Snort для ОС Debian
@@ -32,7 +26,9 @@ author_profile: true
 
 Для начала устанавливаем обновления для ОС:
 
-`sudo apt-get update && sudo apt-get upgrade`
+```bash
+sudo apt-get update && sudo apt-get upgrade
+```
 
 * **apt-get update** - обновление индекса пакетов
 * **apt-get upgrade** - обновление пакетов
@@ -40,38 +36,65 @@ author_profile: true
 
 Устанавливаем обязательные пререквизиты для Snort:
 
-`sudo apt-get -y install build-essential libpcap-dev libpcre3-dev libdumbnet-dev zlib1g-dev`
+```bash
+sudo apt-get -y install build-essential libpcap-dev libpcre3-dev libdumbnet-dev zlib1g-dev
+```
+
 
 * **build-essential** - предоставляет инструменты, необходимых для сборки пакетов Debian;
 * **libpcap-dev** - библиотека для захвата сетевого трафика, необходима для Snort;
 * **libpcre3-dev** - библиотека функций для поддержки регулярных выражений, необходима для Snort;
 * **libdumbnet-dev** - библиотека, ещё известная как libdnet-dev, предоставляющая упрощённый, портативный интерфейс для различных низкоуровневых (interface to several low-level networking routines);
-* **zlib1g-dev** - библиотека, реализующая метод сжатия deflate, необходима для Snort;
+* **zlib1g-dev** - библиотека, реализующая метод сжатия deflate, необходима для Snort.
 
 Устанавливаем необходимые для DAQ парсеры:
 
-`sudo apt-get -y install bison flex`
+```bash
+sudo apt-get -y install bison flex
+```
 
 * **bison** - генератор анализаторов синтаксиса (parser) выражений;
 * **flex** - инструмент для генерации программ, распознающих заданные образцы в тексте.
 
 Устанавливаем дополнительные (рекомендуемые) программы:
 
-`sudo apt-get -y install liblzma-dev openssl libssl-dev iptables-dev libnfnetlink-dev libmnl-dev libnet1-dev libnetfilter-queue-dev pkg-config autotools-dev checkinstall cmake cpputest`
+```bash
+sudo apt-get -y install liblzma-dev openssl libssl-dev iptables-dev libnfnetlink-dev libmnl-dev libnet1-dev libnetfilter-queue-dev pkg-config autotools-dev checkinstall cmake cpputest
+```
 
 Для сборки документации (не является обязательным) понадобиться установить следующие пакеты:
 
-`sudo apt-get -y install w3m dblatex asciidoc source-highlight`
+```bash
+sudo apt-get -y install w3m dblatex asciidoc source-highlight
+```
 
+Для поддержки HTTP/2 траффика необходимо установить библиотеку [Nghttp2](https://nghttp2.org): HTTP/2 C библиотека, которая реализует алгоритм сжатия заголовков HPAC.
+
+Устанавливаем её из исходного кода:
+
+```bash
+sudo apt-get install -y autoconf libtool pkg-config
+cd ~/snort_src
+wget https://github.com/nghttp2/nghttp2/releases/download/v1.19.0/nghttp2-1.19.0.tar.gz
+tar -xzvf nghttp2-1.19.0.tar.gz
+rm nghttp2-1.19.0.tar.gz
+cd nghttp2-1.19.0
+autoreconf -i --force
+automake
+autoconf
+./configure --enable-lib-only
+make
+sudo make install
+```
 
 
 ### Сборка DAQ и Snort из исходного кода
 
-Создадим каталог snort_src, куда сохраним загружаемые архивы с программами: `mkdir ~/snort_src` Snort использует библиотеку Data Acquisition library (DAQ), которую можно скачать с официального сайта Snort. Скачиваем архив с исходным кодом, собираем пакет и устанавливаем его:
+Создадим каталог snort_src, куда сохраним загружаемые архивы с программами: `mkdir ~/snort_src` Snort использует библиотеку Data Acquisition library (DAQ), которую можно скачать с официального сайта Snort. Скачиваем архив с исходным кодом, создаём бинарный пакет с помощью checkinstall и устанавливаем его:
 
 ```bash
 cd ~/snort_src/
-wget https://snort.org/downloads/snort/daq-2.0.6.tar.gz -O daq-2.0.6.tar.gz
+wget https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz -O daq-2.0.6.tar.gz
 tar -xvzf daq-2.0.6.tar.gz
 rm daq-2.0.6.tar.gz
 cd daq-2.0.6
@@ -80,6 +103,7 @@ make
 sudo checkinstall
 sudo dpkg -i daq_2.0.6-1_amd64.deb
 ```
+
 
 Обновляем пути для разделяемых библиотек:
 
@@ -93,15 +117,17 @@ sudo ldconfig
 
 ```bash
 cd ~/snort_src/
-wget https://snort.org/downloads/snort/snort-2.9.8.0.tar.gz -O snort-2.9.8.0.tar.gz
-tar -xvzf snort-2.9.8.0.tar.gz
-rm snort-2.9.8.0.tar.gz
-cd snort-2.9.8.0
+wget https://www.snort.org/downloads/snort/snort-2.9.9.0.tar.gz -O snort-2.9.9.0.tar.gz
+tar -xvzf snort-2.9.9.0.tar.gz
+rm snort-2.9.9.0.tar.gz
+cd snort-2.9.9.0
 ./configure --enable-sourcefire
 make
 sudo checkinstall
-sudo dpkg -i snort_2.9.8.0-1_amd64.deb
+sudo dpkg -i snort_2.9.9.0-1_amd64.deb
 ```
+
+В случае каких-либо ошибок во время сборки необходимо их устранить прежде чем двигаться дальше.
 
 И создаём символьную ссылку
 
@@ -114,9 +140,9 @@ sudo ldconfig
 
 ```
    ,,_     -*> Snort! <*-
-  o"  )~   Version 2.9.8.0 GRE (Build 229)
+  o"  )~   Version 2.9.9.0 GRE (Build 56)
    ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
-           Copyright (C) 2014-2015 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 2014-2016 Cisco and/or its affiliates. All rights reserved.
            Copyright (C) 1998-2013 Sourcefire, Inc., et al.
            Using libpcap version 1.6.2
            Using PCRE version: 8.35 2014-04-04
@@ -136,32 +162,32 @@ sudo ldconfig
 
 , которые можно исправить, одним из следующих способов:
 
-Установкой и удалением программы при помощи make:
+* Установкой и удалением программы при помощи make:
 
-```bash
-make install
-make uninstall
-```
+   ```bash
+   make install
+   make uninstall
+   ```
 
-Добавлением вручную каталогов, необходимых для сборки и установки пакета, которые не может создать **checkinstall** самостоятельно:
+* Добавлением вручную каталогов, необходимых для сборки и установки пакета, которые не может создать **checkinstall** самостоятельно:
 
-```bash
-sudo mkdir /usr/local/lib/snort_dynamicengine
-sudo mkdir /usr/local/include/snort
-sudo mkdir /usr/local/lib/snort
-sudo mkdir /usr/local/include/snort/dynamic_preproc
-sudo mkdir /usr/local/lib/snort/dynamic_preproc
-sudo mkdir /usr/local/lib/snort_dynamicpreprocessor
-sudo mkdir /usr/local/lib/snort/dynamic_output
-sudo mkdir /usr/local/share/doc
-```
+   ```bash
+   sudo mkdir /usr/local/lib/snort_dynamicengine
+   sudo mkdir /usr/local/include/snort
+   sudo mkdir /usr/local/lib/snort
+   sudo mkdir /usr/local/include/snort/dynamic_preproc
+   sudo mkdir /usr/local/lib/snort/dynamic_preproc
+   sudo mkdir /usr/local/lib/snort_dynamicpreprocessor
+   sudo mkdir /usr/local/lib/snort/dynamic_output
+   sudo mkdir /usr/local/share/doc
+   ```
 
-После чего вновь собираем и устанавливаем Snort:
+   После чего вновь собираем и устанавливаем Snort:
 
-```bash
-sudo checkinstall
-sudo dpkg -i snort_2.9.8.0-1_amd64.deb
-```
+   ```bash
+   sudo checkinstall
+   sudo dpkg -i snort_2.9.8.0-1_amd64.deb
+   ```
 
 
 ### Конфигурация сетевого интерфейса, рекомендуемая для Snort

@@ -6,7 +6,9 @@ categories:
    - OS
 tags:
    - OS
+   - Linux
    - Kali Linux
+   - Debian
    - Virtual Machine
 author_profile: true
 ---
@@ -81,7 +83,7 @@ sudo apt-get update && sudo apt-get upgrade
 * `apt-get upgrade` - обновление пакетов
 
 
-### Устанавка дополнительных пакеты и ядра
+### Устанавка дополнительных пакетов и ядра
 
 ```bash
 sudo apt-get install build-essential dkms linux-headers-$(uname -r)
@@ -100,4 +102,24 @@ sudo apt-get install build-essential dkms linux-headers-$(uname -r)
 
 ```bash
 find / -name "*terminal"
+```
+
+
+## Возможные проблемы
+
+### Проблема с Bridge Network в VirtualBox в Windows 7
+
+Ошибка при подключении Bridge Network в VirtualBox:
+
+```
+Failed to open/create the internal network 'HostInterfaceNetworking-Intel(R) Ethernet Connection I217-V' (VERR_INTNET_FLT_IF_NOT_FOUND).
+Failed to attach the network LUN (VERR_INTNET_FLT_IF_NOT_FOUND).
+
+
+Result Code:
+E_FAIL (0x80004005)
+Component:
+ConsoleWrap
+Interface:
+IConsole {872da645-4a9b-1727-bee2-5585105b9eed}
 ```
