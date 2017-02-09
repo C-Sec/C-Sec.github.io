@@ -472,7 +472,7 @@ ru: &DEFAULT_RU
   meta_label                 :
   tags_label                 : "Метки:"   # "Теги:" / "Тэги:"
   categories_label           : "Разделы:"  # Категории:
-  date_label                 : "Дата изменения:"  # Опубликовано:
+  date_label                 : "Опубликовано:"  # Дата публикации:
   comments_label             : "Оставить комментарий"
   comments_title             : "Комментарии"
   more_label                 : "Читать далее" # "Далее" / "Подробнее" / "Читать дальше"
