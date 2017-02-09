@@ -151,7 +151,7 @@ sudo cp * /usr/local/lib/snort_dynamicpreprocessor/
 
     ```
     44 # Setup the network addresses you are protecting
-    45 ipvar HOME_NET 192.168.80.128
+    45 ipvar HOME_NET 192.168.0.104   # Необходимо указать свой IP адрес
     ```
 
   - **Задание внешней сети**
@@ -270,13 +270,18 @@ sudo snort -A console -q -u snort -g snort -c /etc/snort/snort.conf -i eth0
 * **-c /etc/snort/snort.conf** - задаём путь к конфигурационному файлу snort.conf
 * **-i eth0** - указываем сетевой интерфейс, который Snort будет слушать
 
-После того, как запустили Snort с помощью указанной выше команды, необходимо с другой машины послать ICMP-пакеты на сетевой интерфейс машины, который слушает Snort (например, выполнив команду `ping 192.168.80.128`). В результате чего в запущенном терминале со Snort должны появиться примерно следующие строки с предупреждениями, что означает - Snort успешно работает в режиме сетевой IDS и генерирует предупреждения:
+После того, как запустили Snort с помощью указанной выше команды, необходимо с другой машины послать ICMP-пакеты на сетевой интерфейс машины, который слушает Snort (например, выполнив команду `ping 192.168.0.104`). В результате чего в запущенном терминале со Snort должны появиться примерно следующие строки с предупреждениями, что означает - Snort успешно работает в режиме сетевой IDS и генерирует предупреждения:
 
 ```
-02/09-23:46:50.787307  [**] [1:10000001:1] ICMP test detected [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 192.168.0.104 -> 192.168.80.128
-02/09-23:46:51.787332  [**] [1:10000001:1] ICMP test detected [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 192.168.0.104 -> 192.168.80.128
-02/09-23:46:52.786990  [**] [1:10000001:1] ICMP test detected [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 192.168.0.104 -> 192.168.80.128
-02/09-23:46:53.787068  [**] [1:10000001:1] ICMP test detected [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 192.168.0.104 -> 192.168.80.128
+02/10-00:48:14.587138  [**] [1:10000001:1] ICMP test detected [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 192.168.0.100 -> 192.168.0.104
+02/10-00:48:15.590848  [**] [1:10000001:1] ICMP test detected [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 192.168.0.100 -> 192.168.0.104
+02/10-00:48:16.596818  [**] [1:10000001:1] ICMP test detected [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 192.168.0.100 -> 192.168.0.104
+02/10-00:48:17.602570  [**] [1:10000001:1] ICMP test detected [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 192.168.0.100 -> 192.168.0.104
 ```
 
 Чтобы остановить работу Snort можно нажать **CTRL+C** в терминале с запущенным Snort. Также все лог-файлы сохраняются в каталоге `/var/log/snort`.
+
+
+## Конфигурация Snort для ОС Raspbian
+
+На ОС Raspbian (Raspberry Pi 3) Snort настраивается точно таким же способом без всяких изменений.
