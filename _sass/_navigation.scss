@@ -525,6 +525,8 @@
   > li:last-child {
     a {
       color: $gray;
+      font-size: $type-size-7;
+      font-weight: bold;
       border-bottom: none;
     }
   }
