@@ -529,8 +529,12 @@
   }
 
   li ul > li a {
-    padding-left: 2rem;
+    padding-left: 1rem;
     font-weight: normal;
+  }
+
+  li > ul {
+    padding-left: 1rem;
   }
 
   /* hide sub sub links on small screens*/
