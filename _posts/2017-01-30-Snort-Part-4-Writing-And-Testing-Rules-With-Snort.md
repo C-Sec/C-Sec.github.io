@@ -524,7 +524,7 @@ ruletype redalert
       ; \ "
       ```
 
-* **protected_content** (#markdown-heading-1)
+* **protected_content** [content]{#markdown-heading-1)
 
   ***Синтаксис***:
 
@@ -532,7 +532,7 @@ ruletype redalert
 
   ***Предупреждения***:
 
-* **hash** (#markdown-heading-2)
+* **hash** <a name="markdown-heading-2"></a>
 
   ***Синтаксис***:
 
