@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "ru"
-title                    : "Cyber Security"
+title                    : "Компьютерная безопасность"
 title_separator          : "-"
 name                     : "Роман Алексеев"
 description              : "An amazing website."
@@ -98,7 +98,7 @@ author:
   linkedin         :
   pinterest        :
   soundcloud       :
-  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  stackoverflow    : 4204132/roman-alexeev # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
   steam            :
   tumblr           :
   twitter          :

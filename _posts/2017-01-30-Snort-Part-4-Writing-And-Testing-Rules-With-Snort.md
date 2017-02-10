@@ -137,7 +137,7 @@ ruletype redalert
 
   ***Синтаксис***: `msg:"<message text>";`
 
-  ***Пример***:
+  ***Примеры***:
 
 * **reference**
 
@@ -156,7 +156,7 @@ ruletype redalert
 
   ***Синтаксис***: `reference:<id system>, <id>; [reference:<id system>, <id>;]`
 
-  ***Пример***:
+  ***Примеры***:
 
     ```
     alert tcp any any -> any 7070 (msg:"IDS411/dos-realaudio"; \
@@ -177,7 +177,7 @@ ruletype redalert
 
   ***Синтаксис***: `gid:<generator id>;`
 
-  ***Пример***:
+  ***Примеры***:
 
     ```
     alert tcp any any -> any 80 (content:"BOB"; gid:1000001; sid:1; rev:1;)
@@ -194,7 +194,7 @@ ruletype redalert
 
   ***Синтаксис***: `sid:<snort rules id>;`
 
-  ***Пример***:
+  ***Примеры***:
 
     ```
     alert tcp any any -> any 80 (content:"BOB"; sid:1000983; rev:1;)
@@ -207,7 +207,7 @@ ruletype redalert
 
   ***Синтаксис***: `rev:<revision integer>;`
 
-  ***Пример***:
+  ***Примеры***:
 
     ```
     alert tcp any any -> any 80 (content:"BOB"; sid:1000983; rev:1;)
@@ -409,11 +409,15 @@ ruletype redalert
 
   ***Синтаксис***: `classtype:<class name>;`
 
-  ***Пример***:
+  ***Примеры***:
 
     ```
     alert tcp any any -> any 25 (msg:"SMTP expn root"; flags:A+; content:"expn root"; nocase; classtype:attempted-recon;)
     ```
+
+  ***Предупреждения***:
+
+    Опция classtype может иметь только те значения для классификации, которые определены в `snort.conf` с помощью `config classification`. Snort предоставляет стандартный набор классификации в файле `classification.config`, который используется в поставляемых наборах правил.
 
 
 * **priority**
@@ -422,7 +426,7 @@ ruletype redalert
 
   ***Синтаксис***: `priority:<priority integer>;`
 
-  ***Пример***:
+  ***Примеры***:
 
     ```
     alert tcp any any -> any 80 (msg:"WEB-MISC phf attempt"; flags:A+; content:"/cgi-bin/phf"; priority:10;)
@@ -473,7 +477,7 @@ ruletype redalert
     metadata:key1 value1, key2 value2;
     ```
 
-  ***Пример***:
+  ***Примеры***:
 
     ```
     alert tcp any any -> any 80 (msg:"Shared Library Rule Example"; metadata:engine shared; metadata:soid 3|12345;)
