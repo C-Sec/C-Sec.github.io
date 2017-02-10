@@ -15,7 +15,7 @@ Testing Kramdown auto-generated table of contents with unique title and icon ass
 {% raw %}{% include toc title="Unique Title" icon="file-text" %}{% endraw %}
 ```
 
-## Ээлементы HTML
+## Элементы HTML
 
 Below is just about everything you'll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.
 
