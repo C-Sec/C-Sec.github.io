@@ -498,6 +498,12 @@ ruletype redalert
 
   Позволяет устанавливать условие в правила, которые ищут определённое содержание в полезной нагрузке пакетов. "!" - модификатор отрицания.
 
+
+  Ключевое слово **content** имеет ряд модификаторов, которые изменяют поведение ранее указанного **content**. Список модификаторов:
+
+    - [create an anchor 1](#markdown-heading-1)
+    - [create an anchor 1](#markdown-heading-2)
+
   ***Синтаксис***: `content:[!]"<content string>";`
 
   ***Примеры***:
@@ -518,7 +524,7 @@ ruletype redalert
       ; \ "
       ```
 
-* ****
+* **protected_content** (#markdown-heading-1)
 
   ***Синтаксис***:
 
@@ -526,7 +532,7 @@ ruletype redalert
 
   ***Предупреждения***:
 
-* ****
+* **hash** (#markdown-heading-2)
 
   ***Синтаксис***:
 
