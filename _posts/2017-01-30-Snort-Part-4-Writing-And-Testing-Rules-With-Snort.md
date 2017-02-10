@@ -436,11 +436,13 @@ ruletype redalert
 
   <table>
     <tbody>
-      <tr>
-        <th> Ключ </th>
-        <th> Описание </th>
-        <th> Формат значения </th>
-      </tr>
+      <thead>
+        <tr>
+          <th> Ключ </th>
+          <th> Описание </th>
+          <th> Формат значения </th>
+        </tr>
+      <thead>
       <tr>
         <td> engine </td>
         <td> Указывает правило библиотеки общего пользования (Indicate a Shared Library Rule) </td>
