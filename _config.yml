@@ -83,7 +83,7 @@ author:
   bio              : #"I am an amazing person."
   location         : "Москва"
   email            :
-  uri              : "https://vk.com/princer"
+  uri              : # "https://vk.com/princer"
   bitbucket        :
   codepen          :
   dribbble         :
