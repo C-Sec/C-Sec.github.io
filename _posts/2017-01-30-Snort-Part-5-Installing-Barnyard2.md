@@ -182,7 +182,7 @@ sudo chmod o-r /etc/snort/barnyard2.conf
 Теперь Barnyard2 сконфигурирован для работы со Snort. Чтобы протестировать его работу нам нужно запустить Snort и Barnyard2 и сгенерировать какие-нибудь предупреждения. Запускаем Snort в фоновом режиме (как демон), используя те же параметры, что и раньше, только добавив флаг **-D**, который отвечает за запуск Snort в фоновом режиме, и удалив флаг **-A Console**, так как выводить предупреждения на экран терминала теперь не нужно:
 
 ```bash
-sudo /usr/local/bin/snort -q -u snort -g snort -c /etc/snort/snort.conf -i eth0 -D
+sudo snort -q -u snort -g snort -c /etc/snort/snort.conf -i eth0 -D
 ```
 
 На экране должен быть примерно следующий вывод, за исключением идентификатора процесса (PID):
@@ -242,6 +242,6 @@ Waiting for new data
 ```bash
 roman@snort-vm:~$ ps aux | grep snort
 avahi      481  0.0  0.0  32228  2980 ?        Ss   08:39   0:00 avahi-daemon: running [snort-vm.local]
-snort     3160  0.0  2.0 457080 82192 ?        Ssl  09:01   0:00 /usr/local/bin/snort -q -u snort -g snort -c /etc/snort/snort.conf -i eth1 -D
+snort     3160  0.0  2.0 457080 82192 ?        Ssl  09:01   0:00 snort -q -u snort -g snort -c /etc/snort/snort.conf -i eth1 -D
 roman@snort-vm:~$ sudo kill 3160
 ```
