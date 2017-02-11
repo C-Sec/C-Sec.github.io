@@ -64,7 +64,7 @@ PulledPork v0.7.3 - Making signature updates great again!
 
 Запускаем PulledPork вручную, чтобы убедиться, что он корректно работает:
 
-```
+```bash
 sudo /usr/local/bin/pulledpork.pl -c /etc/snort/pulledpork.conf -l
 ```
 
@@ -178,13 +178,13 @@ As before, ping the IP address of the Snort eth0 interface, and then check the d
 
 Пропингуем IP-адрес интерфейса eth0, который слушает Snort, а после проверим БД (пароль от БД - **MYSQLSNORTPASSWORD**):
 
-```
+```bash
 mysql -u snort -p -D snort -e "select count(*) from event"
 ```
 
 Количество отрепортированных событий должно быть больше, чем до пингования. Убедившись в корректности работы Snort c набором правил PulledPork, мы можем добавить PulledPork в crontab с правами root для ежедневного запуска.
 
-```
+```bash
 sudo crontab -e
 ```
 
@@ -196,7 +196,8 @@ sudo crontab -e
 
 
 И отключаем созданных демонов:
-```
+
+```bash
 roman@snort-vm:~$ ps aux | grep snort
 avahi      477  0.0  0.0  32228  2956 ?        Ss   12:00   0:00 avahi-daemon: running [snort-vm.local]
 snort     5796  0.0 12.5 1458300 509408 ?      Ssl  15:03   0:00 snort -u snort -g snort -c /etc/snort/snort.conf -i eth1 -D
