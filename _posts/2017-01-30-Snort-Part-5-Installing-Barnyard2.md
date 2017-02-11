@@ -1,6 +1,6 @@
 ---
 title:  "Snort: Часть 5. Установка Barnyard2"
-excerpt: ""
+excerpt: "Barnyard2 является интерпретатором с открытым исходным кодом для двоичных файлов unified2"
 date:   2017-02-01T05:00:00+03:00
 categories:
    - Snort
