@@ -648,11 +648,16 @@ ruletype redalert
 
 * <a name="http_client_body"></a>**http_client_body**
 
-  ***Синтаксис***:
+  Ключевое слово **http_client_body** ограничивает поиск по телу запроса HTTP-клиента. Ключевое слово **http_client_body** является модификатором для располагающегося до него ключевого слова **content**. Размер области данных, по которым производится поиск, зависит от опции **post_depth** в HttpInspect. Паттерн с данным ключевым словом не будет работать, если **post_depth** в установлена "-1".
+
+  ***Синтаксис***: `http_client_body;`
 
   ***Примеры***:
 
-  ***Предупреждения***:
+    ```
+    alert tcp any any -> any 80 (content:"ABC"; content:"EFG"; http_client_body;)
+    ```
+
 
 * <a name="http_cookie"></a>**http_cookie**
 
@@ -672,11 +677,16 @@ ruletype redalert
 
 * <a name="http_header"></a>**http_header**
 
-  ***Синтаксис***:
+	Ключевое слово **http_header** ограничивает поиск по извлечённым полям заголовка запроса HTTP-клиента или ответа HTTP-сервера (определяется в конфигурации HttpInspect). Ключевое слово **http_method** является модификатором для располагающегося до него ключевого слова **content**. Извлечённые поля заголовка можно нормализовать, определив это в конфигурации HttpInspect.
+
+  ***Синтаксис***: `http_header;`
 
   ***Примеры***:
 
-  ***Предупреждения***:
+    ```
+    alert tcp any any -> any 80 (content:"ABC"; content:"EFG"; http_header;)
+    ```
+
 
 * <a name="http_raw_header"></a>**http_raw_header**
 
@@ -688,35 +698,52 @@ ruletype redalert
 
 * <a name="http_method"></a>**http_method**
 
-  ***Синтаксис***:
+  Ключевое слово **http_method** ограничивает поиск по извлечённому методу из запроса HTTP-клиента. Ключевое слово **http_method** является модификатором для располагающегося до него ключевого слова **content**.
+
+  ***Синтаксис***: `http_method;`
 
   ***Примеры***:
 
-  ***Предупреждения***:
+    ```
+    alert tcp any any -> any 80 (content:"ABC"; content:"GET"; http_method;)
+    ```
 
 * <a name="http_uri"></a>**http_uri**
 
-  ***Синтаксис***:
+  Ключевое слово **http_uri** ограничивает поиск по нормализованному полю URI запроса. Ключевое слово **http_uri** является модификатором для располагающегося до него ключевого слова **content**. Использование опции **http_uri** после **content** эквивалентно опции **uricontent**.
+
+  ***Синтаксис***: `http_uri;`
 
   ***Примеры***:
 
-  ***Предупреждения***:
+    ```
+    alert tcp any any -> any 80 (content:"ABC"; content:"EFG"; http_uri;)
+    ```
 
 * <a name="http_raw_uri"></a>**http_raw_uri**
 
-  ***Синтаксис***:
+  Ключевое слово **http_raw_uri** ограничивает поиск по ненормализованному полю URI запроса. Ключевое слово **http_raw_uri** является модификатором для располагающегося до него ключевого слова **content**.
+
+  ***Синтаксис***: `http_raw_uri;`
 
   ***Примеры***:
 
-  ***Предупреждения***:
+    ```
+    alert tcp any any -> any 80 (content:"ABC"; content:"EFG"; http_raw_uri;)
+    ```
 
 * <a name="http_stat_code"></a>**http_stat_code**
 
-  ***Синтаксис***:
+  Ключевое слово **http_stat_code** ограничивает поиск по извлечённому полю пояснения к статус коду ответа HTTP-сервера. Ключевое слово **http_stat_code** является модификатором для располагающегося до него ключевого слова **content**. Поле пояснения к статус коду будет извлечено, если только задана опция **extended_response_inspection** в **HttpInspect**.
+
+
+  ***Синтаксис***: `http_stat_code;`
 
   ***Примеры***:
 
-  ***Предупреждения***:
+    ```
+    alert tcp any any -> any 80 (content:"ABC"; content:"200"; http_stat_code;)
+    ```
 
 * <a name="http_stat_msg"></a>**http_stat_msg**
 
@@ -768,9 +795,15 @@ ruletype redalert
 
 * **pcre**
 
-  ***Синтаксис***:
+  Ключевое слово *pcre* позволяет использовать Perl-совместимые регулярные выражения [PCRE](http://www.pcre.org).
+
+  ***Синтаксис***: `pcre:[!]"(/<regex>/|m<delim><regex><delim>)[ismxAEGRUBPHMCOIDKYS]";`
 
   ***Примеры***:
+
+    ```
+    alert tcp any any -> any 80 (content:"/foo.php?id="; pcre:"/\/foo.php?id=[0-9]{1,10}/iU";)
+    ```
 
   ***Предупреждения***:
 
