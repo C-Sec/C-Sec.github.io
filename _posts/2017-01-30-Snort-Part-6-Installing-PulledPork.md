@@ -148,9 +148,8 @@ Please review /var/log/sid_changes.log for additional details
 Fly Piggy Fly!
 ```
 
-After this command runs (it takes some time), you should now see snort.rules in /etc/snort/rules, and .so rules in /usr/local/lib/snort_dynamicrules. Pulled Pork combines all the rulesets that it downloads into these two files. You need to make sure to add the line: include $RULE_PATH/snort.rules to the snort.conf file, or the pulled pork rules will never be read into memory when Snort starts:
 
-После выполнения данной команды в каталоге `/etc/snort/rules` появится файл **snort.rules** и **.so**-правила в `/usr/local/lib/snort_dynamicrules`. PulledPork собирает все наборы правил, которые он скачивает, в эти два файла.
+После выполнения данной команды в каталоге `/etc/snort/rules` появится файл **snort.rules** и **.so**-правила в `/usr/local/lib/snort_dynamicrules`. PulledPork собирает все наборы правил, которые он скачивает, в эти два файла. **.so**-правила, или **Shared Object**, или предварительно откомпилированные правила скомпилированы поставщиком правил для определённых платформ и представляют из себя более сложные правила, а также позволяют обфусцировать их (например, для обнаружения атак, которые ещё не пропатчены, но должны определяться без раскрытия самой сути уязвимости).
 
 Чтобы Snort использовал скаченные правила необходимо в его конфигурации `/etc/snort/snort.conf` указать путь до этих правил. Добавляем следующую строку сразу за `include $RULE_PATH/local.rules`:
 
@@ -209,3 +208,5 @@ snort     5804  5.3  2.4 206920 101376 ?       Ss   15:03   1:04 barnyard2 -c /e
 roman     5963  0.0  0.0  12728  2216 pts/0    R+   15:23   0:00 grep barnyard2
 roman@snort-vm:~$ sudo kill 5804
 ```
+
+Стоит обратить внимание, что Snort нужно перезагружать, чтобы новые добавленные правила вступили в силу. Можно это сделать с помощью команды `kill -SIGHUP snort-pid` или перезагрузив сервис Snort.
